@@ -1,0 +1,19 @@
+export const plugins = [
+    'header',
+    'font-bold',
+    'font-italic',
+    'font-underline',
+    'font-strikethrough',
+    'list-unordered',
+    'list-ordered',
+    'block-quote',
+    'block-wrap',
+    'code-block',
+    'table',
+    'image',
+    'link',
+    'clear',
+    'logger',
+    'mode-toggle',
+    'full-screen'
+]
