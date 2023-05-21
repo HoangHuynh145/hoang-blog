@@ -64,6 +64,7 @@ const Login = () => {
                     navigate("/")
                 },
                 onError(error) {
+                    console.log(error)
                     notify(error.message)
                     dispatch(loginFailure())
                 }

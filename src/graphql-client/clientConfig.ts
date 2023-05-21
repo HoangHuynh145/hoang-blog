@@ -5,6 +5,8 @@ import { setContext } from '@apollo/client/link/context';
 import { store } from '../redux/Store';
 import { updateToken } from "../redux/AuthSlice"
 
+// https://hoang-blog-server.onrender.com/graphql
+
 const getNewToken = async (userId: string) => {
     try {
         const res = await axios.post(`https://hoang-blog-server.onrender.com/graphql`, {
