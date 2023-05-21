@@ -43,6 +43,8 @@ const FormContent = () => {
             handleCombackTitle()
         } else if (!accessToken) {
             navigate('/auth/login')
+        } else {
+            document.title = `${editPost.title}.`
         }
     }, [])
 

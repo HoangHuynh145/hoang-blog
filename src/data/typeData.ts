@@ -103,3 +103,35 @@ export const userMenu = [
         isDeveloping: false,
     },
 ]
+
+export const mobileMenu = [
+    {
+        id: 0,
+        name: 'Blog',
+        link: "/blog"
+    },
+
+    {
+        id: 1,
+        name: 'Project',
+        link: "/projects"
+    },
+
+    {
+        id: 2,
+        name: 'resume',
+        link: "/resume"
+    },
+
+    {
+        id: 3,
+        name: 'Bài viết của tôi',
+        link: "/me/articles"
+    },
+
+    {
+        id: 4,
+        name: 'Cài đặt',
+        link: "/setting"
+    },
+]

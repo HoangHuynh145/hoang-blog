@@ -13,10 +13,10 @@ const Navbar = () => {
 
     return (
         <nav className='navbar font-poppins'>
-            <div className='mx-auto max-w-8xl'>
+            <div className='relative mx-auto max-w-8xl z-50'>
                 <div className="mx-4">
                     <div className='navbar-container'>
-                        <Link to="/" >
+                        <Link to="/" className='md:flex-none flex-1'>
                             <img
                                 src={brandImg}
                                 alt="brand" className='rounded md:w-10 md:h-10 w-9 h-9 cursor-pointer'

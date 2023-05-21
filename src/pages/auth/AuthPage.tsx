@@ -31,6 +31,10 @@ const AuthPage = () => {
         setAppTheme(handleCheckTheme)
     }, [theme])
 
+    useEffect(() => {
+        document.title = 'Đăng nhập vào Hoàng blog | Chia sẻ kiến thức.'
+    }, [])
+
     return (
         <div
             className='relative flex justify-center items-center w-screen h-screen'

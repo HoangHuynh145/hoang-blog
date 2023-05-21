@@ -19,6 +19,7 @@ const Workplace = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        document.title = 'Danh sách nơi làm việc.'
     }, [])
 
     return (
@@ -43,10 +44,11 @@ const Workplace = () => {
             <div className='timeline-container'>
                 <div className='timeline-content'>
                     <span className='line'></span>
-                    <div className='space-y-16'>
+                    <div className='space-y-6 md:space-y-16'>
                         {data?.workplaces.length > 0 && data?.workplaces.map((item: Workplace) => (
                             <div
                                 key={item.workplaceId}
+                                className='border-b pb-6 border-b-slate-800/20 dark:border-b-slate-200/20 md:pb-0 md:border-b-0 last:border-b-0'
                             >
                                 <WorkplaceItem workplace={item} setLoadingWorkplace={setLoadingWorkplace} />
                             </div>

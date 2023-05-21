@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { BsMoonStars, BsSun, BsThreeDotsVertical, BsXLg } from "react-icons/bs"
 import { HiComputerDesktop } from "react-icons/hi2"
 import { FaAngleDown } from "react-icons/fa"
@@ -13,6 +13,7 @@ import {
 } from "../../redux/AuthSlice"
 import { useMutation } from "@apollo/client"
 import { logout } from "../../graphql-client/mutations"
+import { mobileMenu } from "../../data/typeData"
 
 const MenuMobile = () => {
     const { theme, setTheme } = useThemeContext() as ThemeInterface
@@ -60,17 +61,40 @@ const MenuMobile = () => {
         })
     }
 
+    const handleOpenModal = () => {
+        document.documentElement.classList.add('overflow-hidden')
+        setisPanelOpen(true)
+    }
+
+    const handleClick = (link: string) => {
+        document.documentElement.classList.remove('overflow-hidden')
+        navigate(link)
+    }
+
+    const renderMenuItems = () => (
+        mobileMenu.map(item => (
+            <li
+                key={item.id}
+                onClick={() => handleClick(item.link)}
+            >
+                {item.name}
+            </li>
+        ))
+    )
+
+
     return (
         <>
-            <span className='md:hidden' onClick={() => setisPanelOpen(true)} >
+            <span className='md:hidden' onClick={handleOpenModal} >
                 <BsThreeDotsVertical size={24} />
             </span>
             {
                 isPanelOpen && (
                     <div
                         onClick={() => setisPanelOpen(false)}
-                        className='md:hidden fixed w-screen h-screen bg-black/20 right-0 top-0 backdrop-blur-sm'
+                        className='md:hidden fixed z-[99] inset-0 w-screen h-screen'
                     >
+                        <div className='absolute inset-0 bg-black/20 backdrop-blur-lg backdrop-filter' />
                         <div
                             onClick={(e) => e.stopPropagation()}
                             className='navbar-mobile'
@@ -82,25 +106,17 @@ const MenuMobile = () => {
                                 <BsXLg size={16} strokeWidth={0.5} />
                             </span>
                             <ul className='capitalize font-semibold flex flex-col gap-4 text-lg'>
-                                <Link to="/blog">
-                                    <li>Blog</li>
-                                </Link>
-                                <Link to="/projects">
-                                    <li>Project</li>
-                                </Link>
-                                <Link to="/resume">
-                                    <li>Resume</li>
-                                </Link>
-                                <Link to={`/${user?.userHashtag}`}>
-                                    <li>Trang cá nhân</li>
-                                </Link>
-                                <Link to="/me/articles">
-                                    <li>Bài viết của tôi</li>
-                                </Link>
-                                <li>Bài viết đã lưu</li>
-                                <Link to="/setting">
-                                    <li>Cài đặt</li>
-                                </Link>
+                                <li
+                                    onClick={() => handleClick(`/${user?.userHashtag}`)}
+                                >
+                                    Trang cá nhân
+                                </li>
+                                <li
+                                    onClick={() => handleClick(`/create/article/title`)}
+                                >
+                                    Tạo bài viết
+                                </li>
+                                {renderMenuItems()}
                                 {
                                     user ?
                                         <li onClick={handleLogout}>Đăng xuất</li>

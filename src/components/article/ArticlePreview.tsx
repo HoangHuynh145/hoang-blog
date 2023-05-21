@@ -49,7 +49,6 @@ const ArticlePreview = () => {
         })
     }
 
-
     const handleCombackContent = () => {
         if (isUpdating) {
             navigate(`/update/article/${editPost.postId}/content`)
@@ -81,6 +80,7 @@ const ArticlePreview = () => {
     }
 
     useEffect(() => {
+        document.title = "Xem trước bài viết."
         if (!user?.accessToken) {
             navigate('/auth/login')
         } else if (!editPost.contents) {

@@ -37,12 +37,18 @@ const HeroCard = () => {
                         {handleSplitText()}
                     </div>
                     <div className='btn-contact-wrapper'>
-                        <Link to="https://www.facebook.com/profile.php?id=100011362084048">
+                        <Link
+                            to="https://www.facebook.com/profile.php?id=100011362084048"
+                            className='w-full'
+                        >
                             <button className='from-blue-600 to-blue-400 contact-btn'>
                                 Liên hệ Facebook
                             </button>
                         </Link>
-                        <Link to="https://www.messenger.com/t/100800419699639/?messaging_source=source%3Apages%3Amessage_shortlink&source_id=1441792&recurring_notification=0">
+                        <Link
+                            to="https://www.messenger.com/t/100800419699639/?messaging_source=source%3Apages%3Amessage_shortlink&source_id=1441792&recurring_notification=0"
+                            className='w-full'
+                        >
                             <button className='from-blue-600 to-rose-500 contact-btn'>
                                 Nhắn messenger cho mình
                             </button>

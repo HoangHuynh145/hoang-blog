@@ -123,6 +123,11 @@ const FormWorkplace = () => {
         }
     }, [])
 
+    useEffect(() => {
+        document.title = `Nơi làm việc: ${workplaceInfo.name}.`
+    }, [workplaceInfo.name])
+
+
     if (dataCreateMutation.loading || dataUpdateMutation.loading) {
         return <Loader />
     }

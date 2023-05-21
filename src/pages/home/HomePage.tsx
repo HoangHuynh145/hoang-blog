@@ -7,10 +7,15 @@ import CopyRight from '../../components/policy/CopyRight'
 import { useQuery } from '@apollo/client'
 import { getTotalInfo } from '../../graphql-client/queries'
 import Loader from '../../components/loader/Loader'
+import { useEffect } from 'react'
 
 
 const HomePage = () => {
     const { loading, data } = useQuery(getTotalInfo)
+
+    useEffect(() => {
+        document.title = 'Huỳnh Huy Hoàng | Chia sẻ kiến thức.'
+    }, [])
 
 
     if (loading) {

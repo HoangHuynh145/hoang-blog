@@ -18,13 +18,13 @@ const Projects = () => {
     const { loading, error, data } = useQuery(getProjects)
 
     useEffect(() => {
+        document.title = 'Danh sách dự án.'
         window.scrollTo(0, 0);
     }, [])
 
     if (error) {
         console.log(error)
     }
-
 
     return (
         <div className='art-bg-article'>
@@ -48,10 +48,11 @@ const Projects = () => {
             <div className='timeline-container'>
                 <div className='timeline-content'>
                     <span className='line'></span>
-                    <div className='space-y-16'>
+                    <div className='space-y-6 md:space-y-16'>
                         {data?.projects.map((project: Project) => (
                             <div
                                 key={project.projectId}
+                                className='border-b pb-6 border-b-slate-800/20 dark:border-b-slate-200/20 md:pb-0 md:border-b-0 last:border-b-0'
                             >
                                 <ProjectsItems project={project} setLoadingProject={setLoadingProject} />
                             </div>

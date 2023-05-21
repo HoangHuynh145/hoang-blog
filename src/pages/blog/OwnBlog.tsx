@@ -1,5 +1,5 @@
 import SideNavbar from '../../layouts/SideNavbar'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import UserArticles from '../../components/article/UserArticles'
 import { useQuery } from '@apollo/client'
 import { getOwnPost } from '../../graphql-client/queries'
@@ -13,9 +13,14 @@ const OwnBlog = () => {
     const [loadingArticle, setLoadingArticle] = useState(false)
     const { popupState } = usePopupContext() as PopupContext
     const user = useAppSelector(state => state.authState.currentUser)
-    const { loading, error, data } = useQuery(getOwnPost, {
+    const { loading, data } = useQuery(getOwnPost, {
         variables: { userId: user?.userId }
     })
+
+    useEffect(() => {
+        document.title = 'Bài viết của tôi.'
+    }, [])
+
 
     return (
         <div className='art-bg-article'>

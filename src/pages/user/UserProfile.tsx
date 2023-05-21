@@ -5,7 +5,7 @@ import SideNavbar from '../../layouts/SideNavbar'
 import { useLocation } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { getUserProfile } from '../../graphql-client/queries'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Loader from '../../components/loader/Loader'
 import { Profile } from '../../services/Interfaces'
 import NotFound from '../error/NotFound'
@@ -25,6 +25,13 @@ const UserProfile = () => {
             console.log(error)
         },
     });
+
+    useEffect(() => {
+        if (profile?.username) {
+            document.title = profile?.username
+        }
+    }, [profile])
+
 
     if (loading) {
         return <Loader />

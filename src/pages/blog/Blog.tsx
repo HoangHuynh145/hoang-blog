@@ -32,7 +32,10 @@ const Blogs = () => {
 
     const renderPosts = () => {
         return listArticles?.map((post: PostDocument) => (
-            <div key={post.postId}>
+            <div
+                key={post.postId}
+                className='border-b pb-6 border-b-slate-800/20 dark:border-b-slate-200/20 md:pb-0 md:border-b-0 last:border-b-0'
+            >
                 <ArticleItem postInfo={post} />
             </div>
         ))
@@ -44,6 +47,7 @@ const Blogs = () => {
 
     useEffect(() => {
         if (pathName) {
+            document.title = `Danh sách bài viết loại ${pathName}.`
             getPostsByType({
                 variables: { type: pathName },
                 onCompleted(data) {
@@ -51,6 +55,7 @@ const Blogs = () => {
                 }
             })
         } else {
+            document.title = 'Danh sách bài viết.'
             getPosts({
                 onCompleted(data) {
                     setListArticles(data.posts)
@@ -59,6 +64,9 @@ const Blogs = () => {
         }
     }, [location.pathname])
 
+    useEffect(() => {
+        
+    }, [])
 
     if (typePostLoading || allPostLoading) {
         return <Loader />
@@ -105,7 +113,7 @@ const Blogs = () => {
                             className='timeline-content'
                         >
                             <span className='line'></span>
-                            <div className='space-y-16'>
+                            <div className='space-y-6 md:space-y-16'>
                                 {renderPosts()}
                             </div>
                         </div>

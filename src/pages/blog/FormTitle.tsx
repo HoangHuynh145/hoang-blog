@@ -76,6 +76,9 @@ const FormTitle = () => {
         }
     }, [])
 
+    useEffect(() => {
+        document.title = `${editPost.title}.`
+    }, [editPost.title])
 
     return (
         <div className='relative w-screen min-h-screen flex items-center'>

@@ -1,7 +1,18 @@
+import { useEffect } from 'react'
 import { useAppSelector } from '../../redux/Hooks'
+import { useNavigate } from 'react-router-dom'
 
 const Member = () => {
-    const isAdmin = useAppSelector(state => state.authState.currentUser?.isAdmin)
+    const user = useAppSelector(state => state.authState.currentUser)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!user?.accessToken) {
+            navigate("/")
+        }
+        document.title = 'Thông tin thành viên.'
+    }, [])
+
     return (
         <>
             <h4 className='font-semibold mb-5'>Quản lý tư cách thành viên</h4>
@@ -13,7 +24,7 @@ const Member = () => {
                             active
                         </span>
                     </div>
-                    <h4 className='uppercase mt-2'>{isAdmin ? 'Quản trị viên' : 'người dùng'}</h4>
+                    <h4 className='uppercase mt-2'>{user?.isAdmin ? 'Quản trị viên' : 'người dùng'}</h4>
                 </div>
             </div>
         </>

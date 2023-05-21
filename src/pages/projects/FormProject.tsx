@@ -125,6 +125,11 @@ const FormProject = () => {
         }
     }, [])
 
+    useEffect(() => {
+        document.title = `Dự án: ${projectInfo.name}.`
+    }, [projectInfo.name])
+
+
 
     if (dataCreateMutation.loading || dataUpdateMutation.loading) {
         return <Loader />

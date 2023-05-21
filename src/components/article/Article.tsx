@@ -9,6 +9,7 @@ import { FaAngleLeft } from 'react-icons/fa'
 import Footer from '../../layouts/Footer'
 import { format } from 'date-fns';
 import { vi } from 'date-fns/locale';
+import { useEffect } from 'react'
 
 const Article = () => {
     const navigate = useNavigate()
@@ -34,6 +35,10 @@ const Article = () => {
         const formattedDate = `${dayOfWeek}, ngày ${dayOfMonth} ${month}, ${year}`;
         return formattedDate
     }
+    
+    useEffect(() => {
+        document.title = data?.post.title
+    }, [data])
 
     if (error) {
         console.log(error)
@@ -57,28 +62,30 @@ const Article = () => {
                     </button>
                 </div>
             </div>
-            <div className='text-white max-w-3xl mx-auto select-text relative pt-10'>
-                <dl>
-                    <dt className="sr-only">Date</dt>
-                    <dd className="absolute top-0 inset-x-0 text-sm text-slate-700 dark:text-slate-400">
-                        <time dateTime={new Date(Number(data?.post.createdAt)).toISOString()}>
-                            {formatDateForArticle(data?.post.createdAt)}
-                        </time>
-                    </dd>
-                </dl>
-                <h1>{data?.post.title}</h1>
-                <div className='mt-6'>
-                    <div className='flex items-center gap-3'>
-                        <img src={data?.post.author.avatar} className='w-9 h-9 rounded-full' />
-                        <ul className='text-sm font-medium'>
-                            <li>{data?.post.author.username}</li>
-                            <Link to={`/${data?.post.author.userHashtag}`}>
-                                <li className='text-sky-500'>{data?.post.author.userHashtag}</li>
-                            </Link>
-                        </ul>
+            <div className='px-4'>
+                <div className='text-white max-w-3xl mx-auto select-text relative pt-10'>
+                    <dl>
+                        <dt className="sr-only">Date</dt>
+                        <dd className="absolute top-0 inset-x-0 text-sm text-slate-700 dark:text-slate-400">
+                            <time dateTime={new Date(Number(data?.post.createdAt)).toISOString()}>
+                                {formatDateForArticle(data?.post.createdAt)}
+                            </time>
+                        </dd>
+                    </dl>
+                    <h1>{data?.post.title}</h1>
+                    <div className='mt-6'>
+                        <div className='flex items-center gap-3'>
+                            <img src={data?.post.author.avatar} className='w-9 h-9 rounded-full' />
+                            <ul className='text-sm font-medium'>
+                                <li>{data?.post.author.username}</li>
+                                <Link to={`/${data?.post.author.userHashtag}`}>
+                                    <li className='text-sky-500'>{data?.post.author.userHashtag}</li>
+                                </Link>
+                            </ul>
+                        </div>
                     </div>
+                    <ArticleRender markdown={data?.post.contents} />
                 </div>
-                <ArticleRender markdown={data?.post.contents} />
             </div>
             <Footer />
         </div >

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from "react-router-dom"
 import { BiLockAlt, BiUser } from "react-icons/bi"
 import { HiOutlineMail } from "react-icons/hi"
@@ -123,6 +123,10 @@ const Register = () => {
         dataUserByName.refetch()
         getUserByName({ variables: { username: registerInfo.username } })
     }
+
+    useEffect(() => {
+        document.title = 'Đăng ký tài khoản Hoàng blog | Chia sẻ kiến thức.'
+    }, [])
 
     return (
         <div className='form-box'>

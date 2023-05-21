@@ -60,7 +60,7 @@ function App() {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
       </Route>
-      <Route path="/blog" element={<Blog />}></Route>
+      <Route path="/blog" element={<Blog />} />
       <Route path="/blog/:slug" element={<Article />} />
       <Route path="tag/:tagName" element={<Blog />} />
       <Route path="article/preview" element={<ArticlePreview />} />

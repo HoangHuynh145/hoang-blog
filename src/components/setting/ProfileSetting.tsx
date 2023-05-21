@@ -95,6 +95,7 @@ const ProfileSetting = ({ setLoading }: { setLoading: Dispatch<React.SetStateAct
         if (!user?.accessToken) {
             navigate("/")
         }
+        document.title = 'Chỉnh sửa thông tin.'
     }, [])
 
     useEffect(() => {

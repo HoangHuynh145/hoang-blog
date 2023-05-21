@@ -1,6 +1,11 @@
+import { useEffect } from 'react'
 import Navbar from '../../layouts/Navbar'
 
 const NotFound = () => {
+    useEffect(() => {
+        document.title = 'Trang này không tồn tại.'
+    }, [])
+
     return (
         <div className='art-bg-article text-slate-800 dark:text-slate-200 min-h-screen flex flex-col'>
             <Navbar />

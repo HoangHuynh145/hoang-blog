@@ -7,7 +7,7 @@ const SideNavbar = () => {
     const navigate = useNavigate()
 
     return (
-        <div className='w-full fixed top-0 flex justify-between items-center gap-2 z-40 md:px-7 h-16 dark:text-slate-200 text-slate-700 bg-white/50 dark:bg-slate-800/50'>
+        <div className='side-navbar-container'>
             <div className='flex items-center'>
                 <Link to="/">
                     <img src={brand} className='rounded w-9 h-9 cursor-pointer hidden md:block' />
