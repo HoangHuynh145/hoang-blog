@@ -117,6 +117,14 @@ const FormProject = () => {
         }
     }
 
+    const handleSubmitProject = () => {
+        if (isUpdating) {
+            handleCheck(updateProjectState)
+        } else {
+            handleCheck(createProjectState)
+        }
+    }
+
     useEffect(() => {
         if (!user?.accessToken) {
             navigate('/auth/login')
@@ -128,7 +136,6 @@ const FormProject = () => {
     useEffect(() => {
         document.title = `Dự án: ${projectInfo.name}.`
     }, [projectInfo.name])
-
 
 
     if (dataCreateMutation.loading || dataUpdateMutation.loading) {
@@ -220,21 +227,21 @@ const FormProject = () => {
                         />
                     </div>
 
-                    {
-                        isUpdating ?
-                            <button
-                                className='step-create-blog-btn float-right'
-                                onClick={() => handleCheck(updateProjectState)}
-                            >
-                                Cập nhật
-                            </button> :
-                            <button
-                                className='step-create-blog-btn float-right'
-                                onClick={() => handleCheck(createProjectState)}
-                            >
-                                Hoàn thành
-                            </button>
-                    }
+                    <div className='w-full flex items-center justify-between'>
+                        <button
+                            className='step-create-blog-btn float-right'
+                            onClick={() => navigate("/")}
+                        >
+                            Trang chủ
+                        </button>
+
+                        <button
+                            className='step-create-blog-btn float-right'
+                            onClick={handleSubmitProject}
+                        >
+                            {isUpdating ? 'Cập nhật' : 'Hoàn thành' }
+                        </button>
+                    </div>
                 </div>
             </div>
             <ToastContainer

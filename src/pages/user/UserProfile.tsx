@@ -2,7 +2,7 @@ import { HiUsers } from 'react-icons/hi2'
 import background from "../../assets/imgs/df_bg.png"
 import Footer from '../../layouts/Footer'
 import SideNavbar from '../../layouts/SideNavbar'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { getUserProfile } from '../../graphql-client/queries'
 import { useEffect, useState } from 'react'
@@ -83,6 +83,11 @@ const UserProfile = () => {
                                     <span>Không có bài biết nào</span>
                             }
                         </div>
+                        <Link to="/me/articles" >
+                            <button className='mt-5 py-2.5 px-4 bg-gradient-to-tr from-blue-600 to-blue-400 rounded-lg hover:opacity-90 self-center text-white w-full'>
+                                Xem thêm
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

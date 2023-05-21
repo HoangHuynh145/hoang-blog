@@ -29,7 +29,9 @@ const Workplace = () => {
             {(loading || loadingWorkplace) && <Loader />}
             <div className='py-16 px-4 flex justify-center items-center flex-col text-slate-900 dark:text-slate-200'>
                 <h2 className='mb-4 font-bold'>Hoàng Huỳnh Experience</h2>
-                <p className='text-lg mb-3'>Những nơi mà mình đã hoạt động.</p>
+                <p className='w-full text-lg mb-3 text-left md:text-center'>
+                    Những nơi mà mình đã hoạt động.
+                </p>
                 {
                     isAdmin && (
                         <button

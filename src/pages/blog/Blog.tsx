@@ -65,7 +65,7 @@ const Blogs = () => {
     }, [location.pathname])
 
     useEffect(() => {
-        
+
     }, [])
 
     if (typePostLoading || allPostLoading) {
@@ -84,7 +84,9 @@ const Blogs = () => {
                             <h2 className='mb-4 font-bold'>Hoàng Huỳnh Blog</h2>
                         }
 
-                        <span className='text-lg'>Không có gì ngoài các bài viết chất lượng, chuyên sâu.</span>
+                        <span className='w-full text-lg mb-3 text-left md:text-center'>
+                            Không có gì ngoài các bài viết chất lượng, chuyên sâu.
+                        </span>
                     </div>
                     <div>
                         <ul className='flex gap-2 justify-start sm:justify-center items-center flex-wrap' >

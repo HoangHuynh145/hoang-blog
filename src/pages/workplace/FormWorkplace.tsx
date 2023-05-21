@@ -115,6 +115,14 @@ const FormWorkplace = () => {
         }
     }
 
+    const handleSubmiWorkplace = () => {
+        if (isUpdating) {
+            handleCheck(updateWorkspaceState)
+        } else {
+            handleCheck(createWorkspaceState)
+        }
+    }
+
     useEffect(() => {
         if (!user?.accessToken) {
             navigate('/auth/login')
@@ -201,22 +209,25 @@ const FormWorkplace = () => {
                             onChange={handleChangeInput}
                         />
                     </div>
-                    {
-                        isUpdating ?
-                            <button
-                                className='step-create-blog-btn float-right'
-                                onClick={() => handleCheck(updateWorkspaceState)}
-                            >
-                                Cập nhật
-                            </button>
-                            :
-                            <button
-                                className='step-create-blog-btn float-right'
-                                onClick={() => handleCheck(createWorkspaceState)}
-                            >
-                                Hoàn thành
-                            </button>
-                    }
+
+                    <div className='w-full flex items-center justify-between'>
+                        <button
+                            className='step-create-blog-btn float-right'
+                            onClick={() => navigate("/")}
+                        >
+                            Trang chủ
+                        </button>
+
+                        <button
+                            className='step-create-blog-btn float-right'
+                            onClick={handleSubmiWorkplace}
+                        >
+                            {isUpdating ? 'Cập nhập' : 'Hoàn thànhnh'}
+                        </button>
+                    </div>
+
+
+
                 </div>
             </div>
             <ToastContainer

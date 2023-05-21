@@ -33,7 +33,9 @@ const Projects = () => {
             {popupState.isOpen && <DeletePopup />}
             <div className='py-16 px-4 flex justify-center items-center flex-col text-slate-900 dark:text-slate-200'>
                 <h2 className='mb-4 font-bold'>Hoàng Huỳnh Projects</h2>
-                <p className='text-lg mb-3'>Tổng hợp những dự án mà mình đã thực hiện.</p>
+                <p className='w-full text-lg mb-3 text-left md:text-center'>
+                    Tổng hợp những dự án mà mình đã thực hiện.
+                </p>
                 {
                     isAdmin && (
                         <button

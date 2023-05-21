@@ -66,8 +66,13 @@ const MenuMobile = () => {
         setisPanelOpen(true)
     }
 
-    const handleClick = (link: string) => {
+    const handleCloseModal = () => {
         document.documentElement.classList.remove('overflow-hidden')
+        setisPanelOpen(false)
+    }
+
+    const handleClick = (link: string) => {
+        handleCloseModal()
         navigate(link)
     }
 
@@ -91,7 +96,7 @@ const MenuMobile = () => {
             {
                 isPanelOpen && (
                     <div
-                        onClick={() => setisPanelOpen(false)}
+                        onClick={handleCloseModal}
                         className='md:hidden fixed z-[99] inset-0 w-screen h-screen'
                     >
                         <div className='absolute inset-0 bg-black/20 backdrop-blur-lg backdrop-filter' />
@@ -100,27 +105,34 @@ const MenuMobile = () => {
                             className='navbar-mobile'
                         >
                             <span
-                                onClick={() => setisPanelOpen(false)}
+                                onClick={handleCloseModal}
                                 className='absolute right-6'
                             >
                                 <BsXLg size={16} strokeWidth={0.5} />
                             </span>
                             <ul className='capitalize font-semibold flex flex-col gap-4 text-lg'>
-                                <li
-                                    onClick={() => handleClick(`/${user?.userHashtag}`)}
-                                >
-                                    Trang cá nhân
-                                </li>
-                                <li
-                                    onClick={() => handleClick(`/create/article/title`)}
-                                >
-                                    Tạo bài viết
-                                </li>
+                                {
+                                    user?.accessToken && (
+                                        <li
+                                            onClick={() => handleClick(`/${user?.userHashtag}`)}
+                                        >
+                                            Trang cá nhân
+                                        </li>
+                                    )
+                                }
+                                {
+                                    user?.isAdmin && (
+                                        <li
+                                            onClick={() => handleClick(`/create/article/title`)}
+                                        >
+                                            Tạo bài viết
+                                        </li>
+                                    )
+                                }
                                 {renderMenuItems()}
                                 {
                                     user ?
-                                        <li onClick={handleLogout}>Đăng xuất</li>
-                                        :
+                                        <li onClick={handleLogout}>Đăng xuất</li> :
                                         <Link to="/auth/login">
                                             <li>Đăng nhập</li>
                                         </Link>

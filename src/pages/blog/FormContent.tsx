@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import markdownItAttrs from "markdown-it-attrs";
 import 'react-markdown-editor-lite/lib/index.css';
 import { useAppSelector } from '../../redux/Hooks';
+import { ToastContainer, toast } from 'react-toastify';
 
 MarkdownEditor.use(CodeBlock)
 
@@ -17,6 +18,7 @@ const FormContent = () => {
     const isUpdating = location.pathname.split('/')[1] === 'update'
     const { editPost, setEditPost } = usePostContext() as PostContextInterface
     const accessToken = useAppSelector(state => state.authState.currentUser?.accessToken)
+    const notify = (message: string) => toast.error(message);
 
     const mdParser = new MarkdownIt({
         html: true, // enable HTML tags in source
@@ -35,6 +37,14 @@ const FormContent = () => {
             navigate(`/update/article/${editPost.postId}/title`, { state: { isComback: true } })
         } else {
             navigate("/create/article/title", { state: { isComback: true } })
+        }
+    }
+
+    const handlePreviewArticle = () => {
+        if(editPost.contents) {
+            navigate("/article/preview", { state: { isUpdating } })
+        } else {
+            notify('Nội dung bài viết đang bị để trống.')
         }
     }
 
@@ -69,12 +79,18 @@ const FormContent = () => {
 
                 <button
                     className='step-create-blog-btn'
-                    onClick={() => navigate("/article/preview", { state: { isUpdating } })}
+                    onClick={handlePreviewArticle}
                 >
 
                     Xem trước bài viết
                 </button>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={1500}
+                draggable={false}
+                pauseOnHover={true}
+            />
         </div>
     )
 }

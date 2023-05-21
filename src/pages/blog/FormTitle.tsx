@@ -107,7 +107,7 @@ const FormTitle = () => {
                             <span className='text-lg'>Thể loại</span>
                         </div>
 
-                        <ul className='grid grid-cols-4 gap-2 mt-2'>
+                        <ul className='grid grid-cols-3 md:grid-cols-4 gap-2 mt-2'>
                             {typeData.map(typeInfo => (
                                 <li
                                     key={typeInfo.id}
@@ -152,7 +152,7 @@ const FormTitle = () => {
                         className='step-create-blog-btn float-right'
                         onClick={() => navigate("/")}
                     >
-                        trang chủ
+                        Trang chủ
                     </button>
 
                     <button

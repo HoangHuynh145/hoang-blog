@@ -125,12 +125,6 @@ export const mobileMenu = [
 
     {
         id: 3,
-        name: 'Bài viết của tôi',
-        link: "/me/articles"
-    },
-
-    {
-        id: 4,
         name: 'Cài đặt',
         link: "/setting"
     },

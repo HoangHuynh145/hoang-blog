@@ -9,6 +9,7 @@ import { logout } from '../../graphql-client/mutations'
 import { logoutFailure, logoutStart, logoutSuccess } from '../../redux/AuthSlice'
 import { useNavigate } from 'react-router-dom'
 import Loader from '../../components/loader/Loader'
+import Footer from '../../layouts/Footer'
 
 const Settings = () => {
     const [settingType, setSettingType] = useState('profile')
@@ -42,7 +43,7 @@ const Settings = () => {
         <div className='art-bg min-h-screen'>
             {updateLoading && <Loader />}
             <SideNavbar />
-            <div className='mx-auto px-4 sm:px-6 md:px-8 xl:px-12 lg:max-w-6xl pt-24'>
+            <div className='mx-auto px-4 sm:px-6 md:px-8 xl:px-12 lg:max-w-6xl pt-24 mb-20'>
                 <div className='grid grid-flow-col-1 md:grid-cols-3 text-slate-800 dark:text-white'>
                     <ul className='flex justify-start items-center md:block gap-5 col-span-1 mb-5'>
                         <li
@@ -71,6 +72,7 @@ const Settings = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
             <ToastContainer
                 position="top-right"
                 autoClose={2500}
