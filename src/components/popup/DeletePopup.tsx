@@ -6,7 +6,7 @@ import { useMutation } from '@apollo/client'
 import { deleteArticle, deleteProject, deleteWorkplace } from "../../graphql-client/mutations"
 import { useAppSelector } from '../../redux/Hooks'
 import Loader from '../loader/Loader'
-import { getProjects, getWorkplaces, getOwnPost, getAllPosts } from '../../graphql-client/queries'
+import { getProjects, getWorkplaces, getOwnPost, getAllPosts, getUserProfile } from '../../graphql-client/queries'
 
 const DeletePopup = () => {
     const user = useAppSelector(state => state.authState.currentUser)
@@ -63,6 +63,10 @@ const DeletePopup = () => {
                     query: getOwnPost,
                     variables: { userId: user?.userId }
                 },
+                {
+                    query: getUserProfile,
+                    variables: { userHashtag: user?.userHashtag }
+                }
             ]
         })
     }
