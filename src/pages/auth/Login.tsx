@@ -22,7 +22,7 @@ const Login = () => {
         email: userEmail ? userEmail : '',
         password: ''
     })
-    const [loginUserState, dataMutation] = useMutation(userLogin)
+    const [loginUserState] = useMutation(userLogin)
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
