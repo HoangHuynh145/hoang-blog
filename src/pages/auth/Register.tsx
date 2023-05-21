@@ -94,7 +94,7 @@ const Register = () => {
         } else if (!regex.test(registerInfo.email)) {
             notify('Email trống hoặc sai định dạng!')
             emailRef.current?.classList.add('box-error')
-        } else if (!registerInfo.password || registerInfo.password.trim()) {
+        } else if (!registerInfo.password || !registerInfo.password.trim()) {
             notify('Trường mật khẩu đang bị để trống!')
             PassRef.current?.classList.add('box-error')
         } else if (registerInfo.password !== registerInfo.confirmPassword) {

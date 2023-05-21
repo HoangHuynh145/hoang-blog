@@ -38,7 +38,6 @@ const Login = () => {
         } else {
             dispatch(loginStart())
             setShouldLogin(true)
-
         }
     }
 
