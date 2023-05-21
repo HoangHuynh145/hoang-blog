@@ -56,7 +56,7 @@ const Login = () => {
         if (shouldLogin) {
             loginUserState({
                 variables: {
-                    email: loginInfo.email,
+                    email: loginInfo.email.trim(),
                     password: loginInfo.password
                 },
                 onCompleted(data) {

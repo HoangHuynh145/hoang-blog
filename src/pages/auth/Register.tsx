@@ -103,8 +103,8 @@ const Register = () => {
         } else {
             dispatch(registerStart())
             const createUserInput = {
-                username: registerInfo.username,
-                email: registerInfo.email,
+                username: registerInfo.username.trim(),
+                email: registerInfo.email.trim(),
                 password: registerInfo.password,
                 avatar: 'https://res.cloudinary.com/dsziocv6v/image/upload/v1682309140/df_avt_rizmyi.jpg'
             }

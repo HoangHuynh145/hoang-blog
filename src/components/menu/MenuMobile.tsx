@@ -43,6 +43,7 @@ const MenuMobile = () => {
     }
 
     const handleLogout = () => {
+        document.documentElement.classList.remove('overflow-hidden')
         dispatch(logoutStart())
         userLogout({
             context: {
@@ -59,6 +60,11 @@ const MenuMobile = () => {
                 console.log(err)
             }
         })
+    }
+
+    const handleLogin = () => {
+        document.documentElement.classList.remove('overflow-hidden')
+        navigate("/auth/login")
     }
 
     const handleOpenModal = () => {
@@ -133,9 +139,7 @@ const MenuMobile = () => {
                                 {
                                     user ?
                                         <li onClick={handleLogout}>Đăng xuất</li> :
-                                        <Link to="/auth/login">
-                                            <li>Đăng nhập</li>
-                                        </Link>
+                                        <li onClick={handleLogin}>Đăng nhập</li>
                                 }
                             </ul>
                             <div className='switch-container'>
